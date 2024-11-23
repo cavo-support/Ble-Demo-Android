@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        app:navigationIcon="@mipmap/ic_back"
+        app:title=" ">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/app_default_function"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="end">
+
+        <Switch
+            android:id="@+id/sw_blood_pressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:switchPadding="10dp"
+            android:textSize="16sp"
+            android:text="@string/app_default_function_blood_pressure"/>
+
+        <Switch
+            android:id="@+id/sw_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:switchPadding="10dp"
+            android:layout_marginTop="12dp"
+            android:textSize="16sp"
+            android:text="@string/app_default_function_temperature"/>
+
+        <Switch
+            android:id="@+id/sw_pressure"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:switchPadding="10dp"
+            android:textSize="16sp"
+            android:text="@string/app_default_function_pressure"/>
+
+        <Switch
+            android:id="@+id/sw_scene"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:switchPadding="10dp"
+            android:textSize="16sp"
+            android:text="@string/app_default_function_scene"/>
+
+        <Switch
+            android:id="@+id/sw_alexa"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:switchPadding="10dp"
+            android:textSize="16sp"
+            android:text="@string/app_default_function_alexa"/>
+
+
+        <Switch
+            android:id="@+id/sw_light_sense"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:switchPadding="10dp"
+            android:textSize="16sp"
+            android:text="@string/app_default_function_light_sense"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="READ"/>
+
+    <Button
+        android:id="@+id/btn_set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="SET"/>
+
+
+</LinearLayout>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.wosmart.sdkdemo">
+
+    <!-- 蓝牙-->
+    <uses-permission android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"
+        />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"
+        />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE"
+        />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <!-- 高精度定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!-- 大致定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:name=".App"
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".activity.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--rtk 升级服务-->
+        <service
+            android:name="com.realsil.sdk.dfu.DfuService"
+            android:enabled="true"
+            android:exported="false" />
+
+
+        <activity android:name=".activity.ScanActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.FunctionActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.EarPhoneActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.LoginActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.TimeActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.UserActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.ClockActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.CallActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.NotifyActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.CameraActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.SedentaryActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.HomeUiActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.DisturbActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.FindBandActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.FindPhoneActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.BatteryActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.SportActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.ResetActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.SyncDataActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.StepActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.SleepActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.HrActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.BpActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.TempActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.LanguageActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.UnitActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.HrDetectActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.LightControlActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.NotifySwitchActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.DeviceInfoActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.TimerActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.StepGoalActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.MusicControlActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.SilenceOtaActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.CustomUiActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.DebugSwitchActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.UpdateStyleColorActivityActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.CustomNotifyActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.FirmwareUpgradeOtaActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.PulseActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.SleepHelpActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.SaunaActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.HRVRmssdActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.DefaultFunctionActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activity.WatchFaceActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.BuiltInWatchFaceActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.MarketWatchFaceActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.CustomWatchFaceActivity"
+            android:exported="false"/>
+
+    </application>
+
+</manifest>
