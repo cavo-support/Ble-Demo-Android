@@ -2,7 +2,6 @@
 
 ## Android  Version Description
 
-
 | Version |                                                                                                                                                       Description                                                                                                                                                        |
 |:-------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | 1.2.36  |                                                                                                                                  1：fix connect bug  <br/> 2. add [setDefaultFunction]  Added default function switch settings (blood pressure, temperature, pressure, scene control, Alexa, light sensitivity)       |
