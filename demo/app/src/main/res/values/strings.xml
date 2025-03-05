@@ -44,6 +44,7 @@
     <string name="app_pulse">Pulse</string>
     <string name="app_sleep_help">Sleep Help</string>
     <string name="app_sauna">Sauna</string>
+    <string name="app_hr_movement">HRMovement</string>
     <string name="app_watch_face">Watch Face</string>
     <string name="app_hrv_rmssd">HRV-rmssd</string>
     <string name="app_default_function">Default Function</string>

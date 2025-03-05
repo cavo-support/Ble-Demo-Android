@@ -171,6 +171,9 @@
         <activity android:name=".activity.SaunaActivity"
             android:exported="false"/>
 
+        <activity android:name=".activity.HRMovementActivity"
+            android:exported="false"/>
+
         <activity android:name=".activity.HRVRmssdActivity"
             android:exported="false"/>
 

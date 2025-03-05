@@ -137,6 +137,8 @@ public class FunctionActivity extends BaseActivity {
 
         Function sauna = new Function(47, getString(R.string.app_sauna));
 
+        Function hrMovement = new Function(HRMovementActivity.FUNCTION_ID, getString(R.string.app_hr_movement));
+
         Function watchFace = new Function(WatchFaceActivity.FUNCTION_ID, getString(R.string.app_watch_face));
 
         Function hrvRmssd = new Function(HRVRmssdActivity.FUNCTION_ID, getString(R.string.app_hrv_rmssd));
@@ -184,6 +186,7 @@ public class FunctionActivity extends BaseActivity {
         functions.add(pulse);
         functions.add(sleepHelp);
         functions.add(sauna);
+        functions.add(hrMovement);
         functions.add(watchFace);
         functions.add(hrvRmssd);
         functions.add(defaultFunction);
@@ -398,6 +401,9 @@ public class FunctionActivity extends BaseActivity {
                         break;
                     case 47:
                         startActivity(new Intent(FunctionActivity.this, SaunaActivity.class));
+                        break;
+                    case HRMovementActivity.FUNCTION_ID:
+                        startActivity(new Intent(FunctionActivity.this, HRMovementActivity.class));
                         break;
                     case WatchFaceActivity.FUNCTION_ID:
                         startActivity(new Intent(FunctionActivity.this, WatchFaceActivity.class));

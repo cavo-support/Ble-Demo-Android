@@ -44,6 +44,7 @@
     <string name="app_pulse">脉冲</string>
     <string name="app_sleep_help">睡眠辅助</string>
     <string name="app_sauna">桑拿</string>
+    <string name="app_hr_movement">心率体动</string>
     <string name="app_watch_face">表盘</string>
     <string name="app_default_function">默认功能</string>
     <string name="app_default_function_blood_pressure">血压</string>
