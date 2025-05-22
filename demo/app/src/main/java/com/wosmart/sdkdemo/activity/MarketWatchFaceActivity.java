@@ -10,8 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.realsil.sdk.dfu.DfuConstants;
-import com.realsil.sdk.dfu.image.BinFactory;
 import com.realsil.sdk.dfu.image.BinIndicator;
+import com.realsil.sdk.dfu.image.FirmwareLoaderX;
 import com.realsil.sdk.dfu.image.LoadParams;
 import com.realsil.sdk.dfu.model.BinInfo;
 import com.realsil.sdk.dfu.model.DfuConfig;
@@ -295,7 +295,7 @@ public class MarketWatchFaceActivity extends BaseActivity {
                     .setIcCheckEnabled(true)
                     .setSectionSizeCheckEnabled(true)
                     .setVersionCheckEnabled(true);
-            BinInfo binInfo = BinFactory.loadImageBinInfo(builder.build());
+            BinInfo binInfo = FirmwareLoaderX.loadImageBinInfo(builder.build());
             if (binInfo.supportBinInputStreams != null && binInfo.supportBinInputStreams.size() <= 0) {
                 //文件错误, bin file error
             } else {

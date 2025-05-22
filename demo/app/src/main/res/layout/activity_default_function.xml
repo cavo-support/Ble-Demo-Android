@@ -87,6 +87,15 @@
             android:textSize="16sp"
             android:text="@string/app_default_function_light_sense"/>
 
+        <Switch
+            android:id="@+id/sw_aging_mode"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:switchPadding="10dp"
+            android:textSize="16sp"
+            android:text="@string/app_default_function_aging_mode"/>
+
     </LinearLayout>
 
 

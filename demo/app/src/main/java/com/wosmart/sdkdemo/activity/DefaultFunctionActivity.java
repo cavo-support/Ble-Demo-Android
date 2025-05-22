@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -15,16 +14,8 @@ import com.wosmart.sdkdemo.R;
 import com.wosmart.sdkdemo.common.BaseActivity;
 import com.wosmart.ukprotocollibary.WristbandManager;
 import com.wosmart.ukprotocollibary.WristbandManagerCallback;
-import com.wosmart.ukprotocollibary.model.db.JWHealthDataManager;
-import com.wosmart.ukprotocollibary.v2.JWHealthDataSearchParams;
-import com.wosmart.ukprotocollibary.v2.JWValueCallback;
 import com.wosmart.ukprotocollibary.v2.common.executor.JWArchTaskExecutor;
-import com.wosmart.ukprotocollibary.v2.entity.JWHRVRmssdInfo;
-import com.wosmart.ukprotocollibary.v2.entity.JWHealthData;
 import com.wosmart.ukprotocollibary.v2.entity.function.JWDefaultFunctionInfo;
-
-import java.util.Calendar;
-import java.util.List;
 
 public class DefaultFunctionActivity extends BaseActivity implements View.OnClickListener {
 
@@ -40,6 +31,7 @@ public class DefaultFunctionActivity extends BaseActivity implements View.OnClic
     private Switch sceneSwitch;
     private Switch alexaSwitch;
     private Switch lightSenseSwitch;
+    private Switch agingModeSwitch;
 
     private JWDefaultFunctionInfo mDefaultFunctionInfo;
 
@@ -71,6 +63,7 @@ public class DefaultFunctionActivity extends BaseActivity implements View.OnClic
                 sceneSwitch.setChecked(defaultFunctionInfo.sceneEnable);
                 alexaSwitch.setChecked(defaultFunctionInfo.alexaEnable);
                 lightSenseSwitch.setChecked(defaultFunctionInfo.lightSenseEnable);
+                agingModeSwitch.setChecked(defaultFunctionInfo.agingModeEnable);
             }
 
         });
@@ -108,6 +101,7 @@ public class DefaultFunctionActivity extends BaseActivity implements View.OnClic
         sceneSwitch = findViewById(R.id.sw_scene);
         alexaSwitch = findViewById(R.id.sw_alexa);
         lightSenseSwitch = findViewById(R.id.sw_light_sense);
+        agingModeSwitch = findViewById(R.id.sw_aging_mode);
     }
 
 
@@ -172,6 +166,14 @@ public class DefaultFunctionActivity extends BaseActivity implements View.OnClic
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (mDefaultFunctionInfo != null) {
                     mDefaultFunctionInfo.lightSenseEnable = b;
+                }
+            }
+        });
+        agingModeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (mDefaultFunctionInfo != null) {
+                    mDefaultFunctionInfo.agingModeEnable = b;
                 }
             }
         });

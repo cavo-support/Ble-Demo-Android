@@ -1,14 +1,15 @@
 package com.wosmart.sdkdemo.activity;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.wosmart.sdkdemo.common.BaseActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+
 import com.wosmart.sdkdemo.R;
+import com.wosmart.sdkdemo.common.BaseActivity;
 import com.wosmart.ukprotocollibary.WristbandManager;
 import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 

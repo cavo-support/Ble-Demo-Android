@@ -16,8 +16,8 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
 import com.realsil.sdk.dfu.DfuConstants;
-import com.realsil.sdk.dfu.image.BinFactory;
 import com.realsil.sdk.dfu.image.BinIndicator;
+import com.realsil.sdk.dfu.image.FirmwareLoaderX;
 import com.realsil.sdk.dfu.image.LoadParams;
 import com.realsil.sdk.dfu.model.BinInfo;
 import com.realsil.sdk.dfu.model.DfuConfig;
@@ -36,11 +36,6 @@ import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerCustomUiPacket;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerScreenStylePacket;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Random;
 
 public class CustomWatchFaceActivity extends BaseActivity {
@@ -404,7 +399,7 @@ public class CustomWatchFaceActivity extends BaseActivity {
                     .setIcCheckEnabled(true)
                     .setSectionSizeCheckEnabled(true)
                     .setVersionCheckEnabled(true);
-            BinInfo binInfo = BinFactory.loadImageBinInfo(builder.build());
+            BinInfo binInfo = FirmwareLoaderX.loadImageBinInfo(builder.build());
             if (binInfo.supportBinInputStreams != null && binInfo.supportBinInputStreams.size() <= 0) {
                 //文件错误, bin file error
                 Toast.makeText(this, "bin file error", Toast.LENGTH_SHORT).show();

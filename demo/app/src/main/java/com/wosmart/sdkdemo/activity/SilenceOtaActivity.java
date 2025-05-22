@@ -1,18 +1,18 @@
 package com.wosmart.sdkdemo.activity;
 
+import static com.realsil.sdk.dfu.DfuConstants.PROGRESS_ACTIVE_IMAGE_AND_RESET;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.realsil.sdk.core.RtkConfigure;
-import com.realsil.sdk.core.RtkCore;
-import com.realsil.sdk.dfu.RtkDfu;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+
 import com.realsil.sdk.dfu.model.DfuConfig;
 import com.realsil.sdk.dfu.model.DfuProgressInfo;
 import com.realsil.sdk.dfu.model.OtaDeviceInfo;
@@ -21,13 +21,10 @@ import com.realsil.sdk.dfu.utils.DfuAdapter;
 import com.realsil.sdk.dfu.utils.GattDfuAdapter;
 import com.wosmart.sdkdemo.R;
 import com.wosmart.sdkdemo.common.BaseActivity;
-import com.wosmart.sdkdemo.util.v7_gt7d.utils.ota.CustomOTAFileUtils;
 import com.wosmart.ukprotocollibary.WristbandManager;
 import com.wosmart.ukprotocollibary.WristbandManagerCallback;
-
-import java.util.logging.Logger;
-
-import static com.realsil.sdk.dfu.DfuConstants.PROGRESS_ACTIVE_IMAGE_AND_RESET;
+import com.wosmart.ukprotocollibary.v2.common.JWLog;
+import com.wosmart.ukprotocollibary.v2.common.executor.JWArchTaskExecutor;
 
 
 public class SilenceOtaActivity extends BaseActivity implements View.OnClickListener {
@@ -160,7 +157,14 @@ public class SilenceOtaActivity extends BaseActivity implements View.OnClickList
                     // 需要用户自行准备 ota 文件，如果是我们的已有的表盘文件，可与我们联系获取
                     // 如果是用户自定义表盘文件，则调用如下工具类制作，具体参数请看函数注释
 //                  String otaFilePath = CustomOTAFileUtils.createOTAFile();
-                    initUkOta("your device mac", "your ota file path");
+
+                    JWArchTaskExecutor.getMainThreadExecutor().execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            initUkOta("67:26:DF:0A:00:06", getCacheDir().getAbsolutePath() + "/watch_MP-TK16E-V3.10.5.15.bin");
+                        }
+                    });
+
 
                     handler.sendEmptyMessage(0x01);
                 } else {
@@ -205,11 +209,25 @@ public class SilenceOtaActivity extends BaseActivity implements View.OnClickList
         if (null == dfuHelperCallback) {
             dfuHelperCallback = new DfuAdapter.DfuHelperCallback() {
                 @Override
-                public void onStateChanged(int i) {
-                    super.onStateChanged(i);
-                    if (i == DfuAdapter.STATE_INIT_OK) {
+                public void onStateChanged(int state) {
+                    super.onStateChanged(state);
+                    JWLog.i(tag, "state = " + state);
+                    if (state == DfuAdapter.STATE_INIT_OK) {
                         // ready to ota
+
+                        dfuHelper.connectDevice(mac);
+                    } else if (state == DfuAdapter.STATE_PREPARED) {
+                        OtaDeviceInfo otaDeviceInfo = dfuHelper.getOtaDeviceInfo();
+
+                        JWLog.i(tag, "otaDeviceInfo = " + otaDeviceInfo);
                         startUkOta(mac, otaFilePath);
+//                        otaViewModel.setOtaDeviceInfo(getDfuAdapter().otaDeviceInfo)
+                    } else if (state == DfuAdapter.STATE_DISCONNECTED || state == DfuAdapter.STATE_CONNECT_FAILED) {
+//                        cancelProgressBar()
+//
+//                        if (!isOtaProcessing()) {
+//                            otaViewModel.setOtaDeviceInfo(null)
+//                        }
                     }
                 }
 
@@ -219,14 +237,16 @@ public class SilenceOtaActivity extends BaseActivity implements View.OnClickList
                 }
 
                 @Override
-                public void onError(int i, int i1) {
-                    super.onError(i, i1);
+                public void onError(int type, int code) {
+                    super.onError(type, code);
+                    JWLog.e(tag, "on error type = " + type + ", code = " + code);
                     // fail
                 }
 
                 @Override
                 public void onProcessStateChanged(int i, Throughput throughput) {
                     super.onProcessStateChanged(i, throughput);
+                    JWLog.i(tag, "progress state = " + i);
                     if (i == PROGRESS_ACTIVE_IMAGE_AND_RESET) {
                         // success
                     }
@@ -235,11 +255,15 @@ public class SilenceOtaActivity extends BaseActivity implements View.OnClickList
                 @Override
                 public void onProgressChanged(DfuProgressInfo dfuProgressInfo) {
                     super.onProgressChanged(dfuProgressInfo);
+                    JWLog.i(tag, "progress change = " + dfuProgressInfo.toString());
                     // progress info
                 }
             };
         }
+
         dfuHelper.initialize(dfuHelperCallback);
+
+
     }
 
     private void startUkOta(String mac, String filePath) {
@@ -250,7 +274,12 @@ public class SilenceOtaActivity extends BaseActivity implements View.OnClickList
         dfuConfig.setAddress(mac);
         dfuConfig.setSectionSizeCheckEnabled(false);//取消大小限制
         dfuConfig.setVersionCheckEnabled(false);//版本检查
-        dfuHelper.startOtaProcess(dfuConfig);// start to ota
+        dfuConfig.setOtaWorkMode(0x0010);
+        dfuConfig.setImageVerifyIndicator(0x00000005);
+//        dfuHelper.startOtaProcess(dfuConfig);// start to ota
+
+        JWLog.i(tag, "dfuConfig = " + dfuConfig);
+        dfuHelper.startOtaProcedure(dfuConfig, true);
     }
 
     private class MyHandler extends Handler {

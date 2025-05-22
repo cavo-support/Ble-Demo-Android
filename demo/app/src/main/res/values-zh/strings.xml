@@ -53,6 +53,7 @@
     <string name="app_default_function_scene">场景控制</string>
     <string name="app_default_function_alexa">Alexa</string>
     <string name="app_default_function_light_sense">光感</string>
+    <string name="app_default_function_aging_mode">老化模式</string>
 
     <string name="app_start_measure">开始测量</string>
     <string name="app_stop_measure">结束测量</string>
