@@ -101,8 +101,8 @@ public class FirmwareUpgradeOtaActivity extends BaseActivity {
                 // compare the device version code to your latest version code(you can save it to your app or get it from you web service)
                 int yourVersionCode = 0;
                 if (yourVersionCode > curVersionCode) {
-                    startOta();
                 }
+                    startOta();
             }
         });
 
@@ -122,7 +122,7 @@ public class FirmwareUpgradeOtaActivity extends BaseActivity {
     }
 
     public void prepareOtaFile() {
-        String binFileName = "V101_3.6.3.0.bin";// we save it at asset now, you will download it in internet
+        String binFileName = "V106_8.1.0.2.bin";// we save it at asset now, you will download it in internet
         File dir = new File(getCacheDir() + "/bin");
         if (!dir.exists()) {
             dir.mkdir();
