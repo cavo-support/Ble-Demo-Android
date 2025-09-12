@@ -232,11 +232,6 @@ public class SilenceOtaActivity extends BaseActivity implements View.OnClickList
                 }
 
                 @Override
-                public void onTargetInfoChanged(OtaDeviceInfo otaDeviceInfo) {
-                    super.onTargetInfoChanged(otaDeviceInfo);
-                }
-
-                @Override
                 public void onError(int type, int code) {
                     super.onError(type, code);
                     JWLog.e(tag, "on error type = " + type + ", code = " + code);
@@ -244,8 +239,8 @@ public class SilenceOtaActivity extends BaseActivity implements View.OnClickList
                 }
 
                 @Override
-                public void onProcessStateChanged(int i, Throughput throughput) {
-                    super.onProcessStateChanged(i, throughput);
+                public void onProcessStateChanged(int i) {
+                    super.onProcessStateChanged(i);
                     JWLog.i(tag, "progress state = " + i);
                     if (i == PROGRESS_ACTIVE_IMAGE_AND_RESET) {
                         // success

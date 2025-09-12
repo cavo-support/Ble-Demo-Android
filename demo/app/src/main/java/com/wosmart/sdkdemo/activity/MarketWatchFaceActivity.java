@@ -196,11 +196,6 @@ public class MarketWatchFaceActivity extends BaseActivity {
                 }
 
                 @Override
-                public void onTargetInfoChanged(OtaDeviceInfo otaDeviceInfo) {
-                    super.onTargetInfoChanged(otaDeviceInfo);
-                }
-
-                @Override
                 public void onError(int type, int code) {
                     super.onError(type, code);
                     // fail
@@ -208,8 +203,8 @@ public class MarketWatchFaceActivity extends BaseActivity {
                 }
 
                 @Override
-                public void onProcessStateChanged(int i, Throughput throughput) {
-                    super.onProcessStateChanged(i, throughput);
+                public void onProcessStateChanged(int i) {
+                    super.onProcessStateChanged(i);
                     Log.e("SSSS", "progress state = " + i);
                     if (i == PROGRESS_ACTIVE_IMAGE_AND_RESET) {
                         // success

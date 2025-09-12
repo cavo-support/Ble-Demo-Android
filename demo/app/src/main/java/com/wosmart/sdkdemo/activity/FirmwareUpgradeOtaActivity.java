@@ -182,10 +182,6 @@ public class FirmwareUpgradeOtaActivity extends BaseActivity {
                     }
                 }
 
-                @Override
-                public void onTargetInfoChanged(OtaDeviceInfo otaDeviceInfo) {
-                    super.onTargetInfoChanged(otaDeviceInfo);
-                }
 
                 @Override
                 public void onError(final int i, int i1) {
@@ -202,8 +198,8 @@ public class FirmwareUpgradeOtaActivity extends BaseActivity {
                 }
 
                 @Override
-                public void onProcessStateChanged(int i, Throughput throughput) {
-                    super.onProcessStateChanged(i, throughput);
+                public void onProcessStateChanged(int i) {
+                    super.onProcessStateChanged(i);
                     if (i == PROGRESS_ACTIVE_IMAGE_AND_RESET) {
                         // success
                         Log.e("AAAA", "firmware upgrade ota success");

@@ -50,9 +50,9 @@ dependencies {
     implementation(name: 'UkProtocolLibary-release-1.2.39', ext: 'aar')
     implementation(name: 'RealtekSDK-1.0.1-release', ext: 'aar')
 
-    implementation files('libs/rtk-core-1.4.3.jar')
-    implementation files('libs/rtk-dfu-3.6.4.jar')
-    implementation files('libs/rtk-bbpro-core-1.8.0.jar')
+    implementation files('libs/rtk-core-1.7.11.jar')
+    implementation files('libs/rtk-dfu-3.13.20.jar')
+    implementation files('libs/rtk-bbpro-core-1.9.4.jar')
 
     def work_version = "2.7.1"
 
